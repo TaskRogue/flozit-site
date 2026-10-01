@@ -1,0 +1,44 @@
+{
+  "_help": "Everything an A/B test may change. Edit, then build with tools/site/build.py in the code repo. See README.md.",
+  "default": "a",
+  "cta": {
+    "_help": "Where every 'Get early access' button points. The variant is added as ?v=<name>. To switch to sign-up later, set href to https://app.flozit.com/signup and label to Get started.",
+    "href": "early-access/",
+    "param": "v"
+  },
+  "rooftop": "a",
+  "variants": {
+    "a": {
+      "headline": "Get your cold Follow Up Boss leads talking again.",
+      "subline": "Alex, your AI assistant, emails the leads you pick from your own Gmail, handles the back and forth, and hands you the ones ready to talk. Without you writing a single follow-up.",
+      "cta_label": "Get early access",
+      "cta_scale": 1.0,
+      "sections": [
+        "why",
+        "how",
+        "get",
+        "control",
+        "gmail",
+        "faq",
+        "founder",
+        "band"
+      ]
+    },
+    "b": {
+      "headline": "Get your cold Follow Up Boss leads talking again.",
+      "subline": "Alex, your AI assistant, emails the leads you pick from your own Gmail, handles the back and forth, and hands you the ones ready to talk. Without you writing a single follow-up.",
+      "cta_label": "Get early access",
+      "cta_scale": 1.0,
+      "sections": [
+        "why",
+        "how",
+        "get",
+        "control",
+        "gmail",
+        "faq",
+        "founder",
+        "band"
+      ]
+    }
+  }
+}
