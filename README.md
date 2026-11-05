@@ -8,7 +8,7 @@ the beta" is a mailto link to support@flozit.com.
 ## Files
 
 - `index.html`, `pricing/`, `privacy/`, `terms/`: the pages. Edit them by hand.
-- `hero.js`: starts the hero background video after the page has loaded. Never on a phone, with
+- `hero.js`: starts the hero background video after the page has loaded. Never on a phone, upright or sideways, or a tablet, with
   reduced motion, or with Save-Data on; those visitors keep the poster. Runs nothing else.
 - `media/`: the hero video (WebM and MP4), the poster and the photos, each as WebP and JPEG.
   Sources and credits: `docs/design/website-photos/` in the app repo (`credits.csv`). Resized copies only.
