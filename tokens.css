@@ -1,0 +1,350 @@
+/* Every design value of the signup and account screens, and the only place one is
+   written (docs/ui-rules.md, Chris 2026-10-14). app.css and the templates use these
+   variables only; scripts/ui_lint.py fails CI on a raw color, size or space anywhere
+   else. The brand matches the product's website. */
+:root {
+  /* Colors */
+  --color-cream: #f6f8fb;
+  --color-white: #ffffff;        /* card, fields, image frames */
+  --color-panel: #f3f6fa;
+  --color-gold: #a88400;
+  --color-gold-light: #f0c815;
+  --color-gold-text: #7a5a00;
+  --color-black: #0f1b2d;
+  --color-muted: #4a5868;
+  --color-slate: #5b6878;
+  --color-placeholder: #6b7785;
+  --color-line: #dde3ea;
+  --color-field: #7f8c9a;
+  --color-note-bg: #fff8e1;
+  --color-note-line: #f1d98a;
+  --color-error-bg: #fdf1ef;
+  --color-error-line: #e7b9b0;
+  --color-error-text: #8a2b1b;
+  --color-ok: #2f6b3f;
+  --color-ok-bg: #e8f2ea;
+  --color-paused-bg: #f6ecd6;
+  --color-neutral-bg: #edf1f5;
+  --color-focus-ring: rgba(14, 99, 182, .3);
+  --shadow-card: 0 1px 2px rgba(16, 16, 16, .04), 0 8px 24px rgba(16, 16, 16, .06);
+  --shadow-knob: 0 1px 3px rgba(16, 16, 16, .25);
+  --color-backdrop: rgba(16, 16, 16, .4);  /* behind the Feedback box */
+  --color-on-gold: #101010;      /* text on gold (buttons, step numbers): dark in both themes */
+  --icon-select: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234a5868' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+
+  /* Type: two families, three weights, eight sizes */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fs-xs: .75rem;      /* 12px: progress step names */
+  --fs-sm: .8125rem;    /* 13px: Required and Optional, the step count, badges, small icons */
+  --fs-md: .9375rem;    /* 15px: field labels, secondary text, Back, links, the footer */
+  --fs-base: 1rem;      /* 16px: body text, inputs, buttons */
+  --fs-lg: 1.0625rem;   /* 17px: lead text, section headings */
+  --fs-xl: 1.25rem;     /* 20px: the FAQ plus sign */
+  --fs-2xl: 1.5rem;     /* 24px: the wordmark, h1 on a phone */
+  --fs-3xl: 1.75rem;    /* 28px: h1 */
+  --lh-none: 1;
+  --lh-tight: 1.3;
+  --lh-body: 1.6;
+  --tracking-caps: .06em;
+
+  /* Spacing: a 4px scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-10: 40px;
+  --space-14: 56px;
+
+  /* Corners */
+  --radius-control: 6px;
+  --radius-box: 8px;
+  --radius-pill: 999px;
+  --radius-round: 50%;
+
+  /* Sizes */
+  --content-max: 40rem;    /* 640px: the card column */
+  --header-max: 72rem;     /* header and footer rows */
+  --header-height: 72px;
+  --footer-height: 64px;
+  --control-height: 48px;  /* buttons and fields */
+  --tap-min: 44px;         /* the smallest tap target */
+  --icon: 24px;            /* the info button's circle, guide step numbers */
+  --check: 20px;           /* checkboxes */
+  --bar: 4px;              /* progress bar and note accent */
+  --dialog-max: 30rem;     /* 480px: the Feedback box */
+  --focus-width: 2px;      /* the keyboard focus outline */
+
+  /* Motion (Chris, 2026-10-20): short fades between screens and on content updates,
+     a check mark that draws once. No bounce, nothing decorative, and none at all when
+     the person asked for reduced motion (app.css). */
+  --motion-fade: 200ms;    /* screens and content updates: 150 to 250 ms */
+  --motion-check: 450ms;   /* the check mark: under 600 ms */
+  --ease-out: cubic-bezier(.2, .7, .3, 1);
+  /* Breakpoint: phone up to 560px, desktop above. Media queries cannot read a
+     variable, so app.css writes 560px; ui_lint allows no other width. */
+
+  /* builder/auth-emails: the sign-in code field */
+  --tracking-code: .3em;
+  --fs-code: var(--fs-3xl);
+  --code-max: 20rem;
+  --tip-img-max: 22.5rem;  /* 360px: a tip's picture, phone width */       
+}
+
+/* Flozit Builder design system (Chris, 2026-10-26). Two themes, Builder and Homeowner.
+   Final (Chris, 2026-10-27; docs/design/tokens-proposed.css, with the 13-dark-mode
+   changes), added to the tokens above in slice 1A. Every existing token name is kept. Block 1 changes four existing values and adds the new tokens, for
+   every frame. Block 2 is the Homeowner look, applied once by home_base.html as
+   class="theme-homeowner" on <html>; no screen ever switches the look itself.
+   Block 3 is dark mode for both, following the device setting, no toggle. */
+
+/* ---------- 1. Shared tokens, Builder values ---------- */
+:root {
+  /* Existing values that change (the Builder look is direction C) */
+  --radius-control: 6px;
+  --radius-box: 8px;
+  --color-slate: #5b6878;
+  --shadow-card: none;          /* was a soft shadow: the Builder card uses a border instead */
+
+  /* Type additions */
+  --fs-4xl: 2.5rem;             /* 40px: the homeowner money hero only; the homeowner headline uses --fs-3xl */
+  --fs-beside: var(--fs-sm);    /* 13px: step names beside Gantt bars, week labels */
+
+  /* Primary button: the logo's blue (Chris, 2026-11-04), so it never reads as a status */
+  --color-primary-bg: #0e63b6;
+  --color-primary-text: #ffffff;
+  --radius-button: 6px;
+
+  /* Look tokens (the only things the Homeowner theme overrides) */
+  --color-page: #ffffff;
+  --color-card: #ffffff;
+  --color-card-line: #c9d2dc;
+  --color-card-tint: #f3f6fa;
+  --label-case: uppercase;                      /* section labels */
+  --label-tracking: .08em;
+  --label-weight: 600;
+  --label-size: var(--fs-sm);
+  --label-color: var(--color-muted);
+  --button-weight: 600;
+  --color-header-bg: #0a2a4f;
+  --color-header-text: #ffffff;
+  --header-edge: 3px solid #f0c815;
+
+  /* Navigation: the builder sidebar (desktop) and bottom bar (phone) */
+  --nav-width: 200px;
+  --color-nav-bg: #0a2a4f;
+  --color-nav-text: #bcc9d8;
+  --color-nav-text-on: #ffffff;
+  --color-nav-on-bg: #14406f;
+  --color-nav-accent: #f0c815;
+  --nav-edge: 3px;
+  --color-nav-count-bg: #f0c815;
+  --color-nav-count-text: #101010;
+  --tabbar-height: 56px;
+
+  /* The six step statuses: bar fills (3:1 or better on white and cream) */
+  --color-status-done: #8a94a0;
+  --color-status-scheduled: #7d8ea3;
+  --color-status-progress: var(--color-ok);     /* #2f6b3f */
+  --color-status-soon: #b9770e;
+  --color-status-blocked: #a63d2a;
+  --color-status-late: var(--color-error-text); /* #8a2b1b */
+  --color-on-status: #ffffff;                   /* the lock and late icons, 6.3:1 and 8.6:1 */
+
+  /* The six statuses as badges: text on a tint, all AA */
+  --color-status-done-text: #4a5868;
+  --color-status-done-bg: #edf1f5;
+  --color-status-scheduled-text: #4a5868;
+  --color-status-scheduled-bg: #eef2f7;
+  --color-status-progress-text: var(--color-ok);
+  --color-status-progress-bg: var(--color-ok-bg);
+  --color-status-soon-text: #8c5a06;            /* 5.0:1 on the paused tint; #b9770e is 3.1, graphics only */
+  --color-status-soon-bg: var(--color-paused-bg);
+  --color-status-blocked-text: #a63d2a;
+  --color-status-blocked-bg: var(--color-error-bg);
+  --color-status-late-text: #ffffff;
+  --color-status-late-bg: var(--color-error-text);
+
+  /* Money: never red */
+  --color-money-under: var(--color-ok);         /* green, with a down arrow */
+  --color-money-over: #a8440f;                  /* deep orange, with an up arrow, 6.0:1 on white */
+
+  /* Schedule chrome */
+  --color-decision: #0f1b2d;
+  --decision-dot: 8px;
+  --color-today: #0e63b6;
+  --color-dependency: #aab6c3;
+  --color-weekend: rgba(16, 16, 16, .05);
+  --row-height: 36px;
+  --bar-height: 20px;
+  --radius-bar: 3px;
+  --color-bar-focus: #0e63b6;
+
+  /* Overlays: hover card, Undo bar, toast */
+  --color-overlay-bg: #0f1b2d;
+  --color-overlay-text: #ffffff;
+  --color-overlay-accent: #f0c815;
+  --shadow-float: 0 8px 24px rgba(16, 16, 16, .18);
+  --motion-undo: 6000ms;                        /* how long an Undo bar stays */
+  --color-link: #0b5aa6;
+  --color-link-line: #0b5aa6;
+  --color-wordmark: #f0c815;
+}
+
+/* ---------- 2. Homeowner look (direction B), set once by home_base.html ---------- */
+.theme-homeowner {
+  --radius-control: 12px;
+  --radius-box: 16px;
+  --radius-button: 999px;
+  --radius-bar: 4px;
+  --color-card: #f2f7fd;
+  --color-card-line: transparent;
+  --color-card-tint: #ffffff;
+  --label-case: none;                           /* sentence case section headings */
+  --label-tracking: 0;
+  --label-size: var(--fs-lg);
+  --label-color: #0f1b2d;
+  --button-weight: 500;
+  --color-header-bg: #ffffff;
+  --color-header-text: #0f1b2d;
+  --header-edge: 0;
+  --color-wordmark: #0f1b2d;
+  --nav-width: 220px;
+  --color-nav-bg: #f2f7fd;
+  --color-nav-text: #4a5868;
+  --color-nav-text-on: #0f1b2d;
+  --color-nav-on-bg: #ffffff;
+  --nav-edge: 0;
+  --color-today: #7a5a00;
+  --color-nav-accent: #0e63b6;
+}
+
+/* ---------- 3. Dark mode, both themes, device setting only ---------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Existing tokens remapped, so templates need no change: black stays "text",
+       white stays "card", cream stays "page" */
+    --color-cream: #0d141c;
+    --color-white: #15202c;
+    --color-panel: #1a2633;
+    --color-black: #e8eef5;
+    --color-muted: #a9b6c4;
+    --color-slate: #93a1b0;
+    --color-placeholder: #8b99a8;
+    --color-line: #2a3646;
+    --color-field: #6b7c8f;
+    --color-gold-text: #f2d35a;
+    --color-note-bg: #2a2410;
+    --color-note-line: #5a4a14;
+    --color-error-bg: #3f1f19;
+    --color-error-line: #6b3328;
+    --color-error-text: #f0a08f;  /* 7.1:1 on the error tint */
+    --color-ok: #7fcf93;
+    --color-ok-bg: #1f3a27;
+    --color-paused-bg: #3a2a10;
+    --color-neutral-bg: #222d3a;
+    --color-focus-ring: rgba(125, 184, 240, .4);
+    --color-backdrop: rgba(0, 0, 0, .6);
+    --shadow-knob: 0 1px 3px rgba(0, 0, 0, .6);
+
+    /* Fixed values for everything that pointed at --color-black, --color-white or
+       --color-cream as a surface or as text on a dark surface, since those three swap
+       meaning above. Checked token by token (Chris, 2026-10-26). */
+    --color-primary-bg: #7db8f0;
+    --color-primary-text: #08192b;
+    --color-page: #0d141c;
+    --color-header-bg: #08111a;
+    --color-header-text: #e8eef5;
+    --color-nav-bg: #08111a;
+    --color-nav-text: #a9b6c4;
+    --color-nav-text-on: #ffffff;
+    --color-nav-on-bg: #1b2c40;
+    --color-nav-count-text: #101010;
+    --color-decision: #e8eef5;
+    --color-today: #8cc2f3;
+
+    --color-status-done: #6f7b88;
+    --color-status-scheduled: #6a7d93;
+    --color-status-progress: #3f8a52;  /* 3.8:1 */
+    --color-status-soon: #d08a1f;      /* 5.7:1 */
+    --color-status-blocked: #dd5c3e;   /* 4.4:1, white lock 3.7:1 */
+    --color-status-late: #c0442f;      /* 3.2:1, white icon 5.1:1 */
+    --color-status-done-text: #c3ccd6;
+    --color-status-done-bg: #222d3a;
+    --color-status-scheduled-text: #c3ccd6;
+    --color-status-scheduled-bg: #1f2b3a;
+    --color-status-progress-text: #7fcf93;
+    --color-status-progress-bg: #1f3a27;
+    --color-status-soon-text: #f2bb5f; /* 7.9:1 */
+    --color-status-soon-bg: #3a2a10;
+    --color-status-blocked-text: #f0a08f;
+    --color-status-blocked-bg: #3f1f19;
+    --color-status-late-text: #ffffff;
+    --color-status-late-bg: #a9392a;   /* 6.4:1 */
+
+    --color-money-under: #7fcf93;      /* 8.7:1 */
+    --color-money-over: #f29a5c;       /* 7.4:1 */
+
+    --color-dependency: #566577;
+    --color-weekend: rgba(255, 255, 255, .05);
+    --color-bar-focus: #8cc2f3;
+
+    --color-overlay-bg: #e8eef5;
+    --color-overlay-text: #0f1b2d;
+    --color-overlay-accent: #0e63b6;
+    --shadow-float: 0 8px 24px rgba(0, 0, 0, .5);
+    --color-gold: #f0c815;
+    --color-gold-light: #f6da5c;
+    --color-link: #8cc2f3;
+    --color-link-line: #8cc2f3;
+    --color-card: #15202c;
+    --color-card-line: #3a4859;
+    --color-card-tint: #1a2633;
+    --color-wordmark: #f0c815;
+  }
+  .theme-homeowner {
+    --color-today: #f2d35a;
+    --color-nav-bg: #182636;
+    --color-nav-text: #a9b6c4;
+    --color-nav-text-on: #e8eef5;
+    --color-nav-on-bg: #15202c;
+    --color-header-bg: #15202c;
+    --color-header-text: #e8eef5;
+    --color-wordmark: #e8eef5;
+    --color-card: #182636;
+    --color-card-tint: #15202c;
+    --label-color: #e8eef5;
+    --color-nav-accent: #7db8f0;
+  }
+}
+
+/* Reduced motion: no fades, no drawing check mark, no Undo countdown animation; the
+   Undo bar still waits --motion-undo before it goes (app.css already zeroes the fades). */
+@media (prefers-reduced-motion: reduce) {
+  :root { --motion-fade: 0ms; --motion-check: 0ms; }
+}
+
+/* Dark mode, the parts the design file leaves to the app (slice 1A): the browser's own
+   controls follow it, and the select arrow uses the dark muted color. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --icon-select: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a9b6c4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  }
+}
+
+/* The logo plate (docs/design/screens/13-dark-mode/notes.md): clear in light mode; a light
+   plate in dark mode, so a logo never sits straight on a dark surface. */
+:root {
+  --color-plate: transparent;
+  --radius-plate: 6px;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --color-plate: #f8f5f0; }
+}
