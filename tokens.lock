@@ -1,6 +1,7 @@
 {
   "source_path": "C:\\Users\\csimo\\github\\flozit-worktrees\\slice1a\\flozit\\web\\static\\tokens.css",
-  "source_commit": "8dc680457f5e062ebc5528907a0f6e876fead1f6",
+  "source_commit": "82be252fd3d493d79e2e84aff90eeb8c32e65c12",
   "source_uncommitted_changes": false,
-  "sha256": "6cbd51dca4a465514305afa5dff54ec807d629699dafc849cbbc07aeb2f17eb1"
+  "sha256": "6cbd51dca4a465514305afa5dff54ec807d629699dafc849cbbc07aeb2f17eb1",
+  "dark_scope_sha256": "256fccd16b2152987855ff8a481e6e7e058e93f0998f993b8414433942154efa"
 }
