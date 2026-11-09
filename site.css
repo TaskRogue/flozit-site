@@ -38,6 +38,8 @@ main>section[id]{scroll-margin-top:var(--header-height)}
 .button{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);height:var(--control-height);padding:0 var(--space-6);border-radius:var(--radius-button);background:var(--color-primary-bg);color:var(--color-primary-text);font-size:var(--fs-base);font-weight:var(--fw-semibold);border:0;text-decoration:none;white-space:nowrap;cursor:pointer}
 .button.big{height:56px;padding:0 var(--space-7);font-size:var(--fs-lg)}
 .button.wide{width:100%}
+/* the header's Join the beta: the compact 44px button from the hero redo, at every width */
+.head-act .button{height:var(--tap-min);padding:0 var(--space-4);font-size:var(--fs-md)}
 .button:focus-visible,a:focus-visible,summary:focus-visible{outline:var(--focus-width) solid var(--color-black);outline-offset:2px}
 .link{display:inline-flex;align-items:center;min-height:var(--tap-min);font-weight:var(--fw-medium);color:var(--color-link)}
 
@@ -129,7 +131,6 @@ main>section[id]{scroll-margin-top:var(--header-height)}
   main>section{padding:var(--space-10) 0}
   .head-row{gap:var(--space-2)}
   .site-nav{display:none}
-  .head-act .button{height:var(--tap-min);padding:0 var(--space-4);font-size:var(--fs-md)}
   .menu{display:block}
   .h2s{font-size:1.625rem}
   .lead{font-size:var(--fs-lg)}
