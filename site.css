@@ -9,6 +9,9 @@
 @font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/inter-latin-400-normal.woff2") format("woff2"); }
 @font-face { font-family: "Inter"; font-style: normal; font-weight: 500; font-display: swap; src: url("/fonts/inter-latin-500-normal.woff2") format("woff2"); }
 @font-face { font-family: "Inter"; font-style: normal; font-weight: 600; font-display: swap; src: url("/fonts/inter-latin-600-normal.woff2") format("woff2"); }
+/* Red Hat Display 800, only for the wordmark and the mock's plate (--display): subset to the letters
+   they set (Flozit, HC); any other letter falls back to Inter. fonts/red-hat-display/, SIL OFL. */
+@font-face { font-family: "Red Hat Display"; font-style: normal; font-weight: 800; font-display: swap; src: url("/fonts/red-hat-display/red-hat-display-800-wordmark.woff2") format("woff2"); unicode-range: U+0043, U+0046, U+0048, U+0069, U+006C, U+006F, U+0074, U+007A; }
 
 *,*::before,*::after{box-sizing:border-box}
 html{font-family:var(--font);font-size:17px;line-height:1.55;color:var(--ink);background:var(--page);-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
