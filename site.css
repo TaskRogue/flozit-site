@@ -300,9 +300,12 @@ main>section[id]{scroll-margin-top:64px}
 @media (min-width:901px){.head-act .log{display:inline-flex;align-items:center;min-height:44px;padding:0 var(--sp-2)}}
 
 /* the phone menu: the design's menu button, opening a sheet under the header (a details element; menu.js only closes it) */
-.menu{display:none}
-.menu summary{list-style:none;cursor:pointer;width:44px;height:44px;border-radius:var(--r-ctl);display:flex;align-items:center;justify-content:center;color:var(--ink)}
+/* sized like the design's .menu-btn: 44px that the header row may shrink, and the icon a block, so it
+   sits where the design draws it (it was 4px right and 4px high at phone width) */
+.menu{display:none;width:44px}
+.menu summary{list-style:none;cursor:pointer;height:44px;padding:0 6px;border-radius:var(--r-ctl);display:flex;align-items:center;justify-content:center;color:var(--ink)}
 .menu summary::-webkit-details-marker{display:none}
+.menu summary svg{display:block}
 .menu .close{display:none}
 .menu[open] .open{display:none}
 .menu[open] .close{display:block}
