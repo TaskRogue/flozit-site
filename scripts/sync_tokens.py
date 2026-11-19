@@ -26,7 +26,7 @@ TOKENS = ROOT / "tokens.css"
 LOCK = ROOT / "tokens.lock"
 DARK_SCOPE = ROOT / "tokens-dark.css"
 DEFAULT_SOURCE = Path(
-    r"C:\Users\csimo\github\flozit-worktrees\slice1a\flozit\web\static\tokens.css"
+    r"C:\Users\csimo\github\flozit-worktrees\password\flozit\web\static\tokens.css"
 )
 
 
