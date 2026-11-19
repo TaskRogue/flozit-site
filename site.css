@@ -287,7 +287,7 @@ main>section.scope{padding:var(--sp-6) 0;border-top:1px solid var(--line-soft);b
 main>section[id]{scroll-margin-top:64px}
 @media (min-width:901px){.head-act .log{display:inline-flex;align-items:center;min-height:44px;padding:0 var(--sp-2)}}
 
-/* the phone menu: the design's menu button, opening a sheet under the header (a details element, no script) */
+/* the phone menu: the design's menu button, opening a sheet under the header (a details element; menu.js only closes it) */
 .menu{display:none}
 .menu summary{list-style:none;cursor:pointer;width:44px;height:44px;border-radius:var(--r-ctl);display:flex;align-items:center;justify-content:center;color:var(--ink)}
 .menu summary::-webkit-details-marker{display:none}
@@ -332,3 +332,7 @@ main>section.flush-top{padding-top:0}
 .proof-line{margin-top:8px;max-width:30rem}
 .beta-cta{margin-top:var(--sp-6)}
 .price-note{margin-top:var(--sp-5);max-width:var(--measure)}
+
+/* review fixes: section links clear the sticky header; summaries get the site's focus outline */
+.legal-sec{scroll-margin-top:80px}
+summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}

@@ -22,11 +22,15 @@ app's sign-up, https://app.flozit.com/sign-up.
   Sources and credits: `docs/design/website-photos/` and `docs/design/screens/20-website/credits.csv`
   in the app repo. Resized copies only. `media/screens/`: the product screens, as cropped by Claude
   Design (20-website `img/`); they are recaptured from the app, not edited here.
-- `site.css`: the site's layout. Colours, spacing and corners come only from tokens; never
-  write a raw colour in `site.css`.
+- `site.css`: the site's layout, copied from the design's stylesheet. Colours come only from
+  tokens; never write a raw colour in `site.css`. Small sizes and spacings inside components
+  (chips, the mock, the phone frame) are the design's own pixel values.
 - `site-tokens.css`: the design's names for the tokens (`--page`, `--ink`, `--accent`, ...), each
-  pointing at a `tokens.css` value, plus the few website-only values the app has no token for
-  (the hero's overlays over the video, and the shadows). Edited by hand.
+  pointing at a `tokens.css` value, plus the website-only values the app has no token for: the
+  hero's colours and overlays over the video, the mock's photo tiles, the shadows, and the two
+  large section spacings (64px and 96px). Edited by hand.
+- `menu.js`: closes the phone menu when a link in it is tapped, on Escape and on a tap outside.
+  The menu works without it.
 - `tokens.css`, `tokens-dark.css` and `tokens.lock`: a copy of the Flozit app's design tokens, the
   dark-mode block of it as a `.theme-dark` class (every page uses it), and the lock. Do not edit them by
   hand; `scripts/sync_tokens.py` writes all three.
