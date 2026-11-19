@@ -8,8 +8,10 @@
   var button = document.querySelector(".pause");
   if (!hero || !video || !button) return;
 
+  var phone = window.matchMedia("(max-width: 560px), (pointer: coarse)");
+
   function allowed() {
-    if (window.matchMedia("(max-width: 560px), (pointer: coarse)").matches) return false;
+    if (phone.matches) return false;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
     var c = navigator.connection;
     if (c && c.saveData) return false;
@@ -46,6 +48,13 @@
     if (played && played.then) played.then(show, function () {});
     else show();
   }
+
+  /* A desktop window narrowed to phone size hides the video (site.css), so pause it too. */
+  function onResize() {
+    if (phone.matches && video.querySelector("source") && !hero.classList.contains("paused")) stop();
+  }
+  if (phone.addEventListener) phone.addEventListener("change", onResize);
+  else if (phone.addListener) phone.addListener(onResize);
 
   button.addEventListener("click", function () {
     if (hero.classList.contains("paused")) go();

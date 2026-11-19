@@ -88,6 +88,9 @@ p a{text-decoration:underline}
 .pause .ic-play{display:none}
 .hero.paused .pause .ic-pause{display:none}.hero.paused .pause .ic-play{display:block}
 @media (prefers-reduced-motion:reduce){.hero-media video,.pause{display:none}}
+/* No hero video on a phone, upright or sideways, or a touch screen: the poster stays (Chris, 2026-11-19).
+   hero.js never adds the video's sources there, so the file is not downloaded. */
+@media (max-width:560px),(pointer:coarse){.hero-media video,.pause{display:none}}
 @media (min-width:901px){.hero-row{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}}
 
 /* the portal mock at the hero's right (Nov 4 layout) */
