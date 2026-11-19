@@ -1,10 +1,12 @@
 /* Starts the hero background video after the page has loaded. It never starts on a phone,
    upright (560px and under) or sideways (a touch screen, also tablets), when the device asks for
-   reduced motion, or when Save-Data is on; those visitors keep the still poster. The button pauses and plays it. No cookies, no tracking. */
+   reduced motion, or when Save-Data is on; those visitors keep the still poster (Chris, 2026-11-05).
+   The button pauses and plays it and shows only once the video plays. No cookies, no tracking. */
 (function () {
+  var hero = document.querySelector(".hero");
   var video = document.querySelector(".hero-video");
-  var button = document.querySelector(".hero-pause");
-  if (!video || !button) return;
+  var button = document.querySelector(".pause");
+  if (!hero || !video || !button) return;
 
   function allowed() {
     if (window.matchMedia("(max-width: 560px), (pointer: coarse)").matches) return false;
@@ -21,6 +23,19 @@
     video.appendChild(s);
   }
 
+  function stop() {
+    video.pause();
+    hero.classList.add("paused");
+    button.setAttribute("aria-label", "Play the background video");
+  }
+
+  function go() {
+    var played = video.play();
+    hero.classList.remove("paused");
+    button.setAttribute("aria-label", "Pause the background video");
+    if (played && played.catch) played.catch(stop);
+  }
+
   function start() {
     if (!allowed()) return;
     addSource(video.getAttribute("data-webm"), "video/webm");
@@ -33,11 +48,10 @@
   }
 
   button.addEventListener("click", function () {
-    var paused = button.classList.toggle("paused");
-    if (paused) video.pause();
-    else video.play();
-    button.setAttribute("aria-label", paused ? "Play background video" : "Pause background video");
+    if (hero.classList.contains("paused")) go();
+    else stop();
   });
+  video.addEventListener("error", stop);
 
   if (document.readyState === "complete") start();
   else window.addEventListener("load", start);

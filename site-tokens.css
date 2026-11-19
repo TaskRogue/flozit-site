@@ -1,0 +1,68 @@
+/* flozit.com's own names for the design tokens, loaded after tokens.css and tokens-dark.css.
+   The site is dark for everyone (Chris, 2026-11-12): <html class="theme-dark"> gives every page
+   the palette's dark values whatever the device setting is. The names below are the ones the
+   20-website design (docs/design/screens/20-website/site.css in the app repo) uses, so site.css
+   reads like the design. Every colour points at a token from tokens.css, except the handful of
+   website-only values at the end (the hero's overlays and the shadows), which the app has no
+   token for and which live here, never in site.css. */
+:root {
+  /* Colours: the palette's dark values (tokens.css, option A dark) */
+  --page: var(--color-page);
+  --surface: var(--color-card);
+  --surface-2: var(--color-card-tint);
+  --line: var(--color-line);
+  --line-soft: var(--color-line-soft);
+  --ink: var(--color-black);
+  --ink-2: var(--color-muted);
+  --ink-3: var(--color-tertiary);
+  --accent: var(--color-primary-bg);
+  --accent-ink: var(--color-accent-ink);
+  --accent-tint: var(--color-accent-tint);
+  --accent-on: var(--color-primary-text);
+  --ok: var(--color-ok);
+  --ok-tint: var(--color-ok-bg);
+  --warn: var(--color-warn);
+  --warn-tint: var(--color-warn-bg);
+
+  /* Corners (tokens.css block 1: fields 8px, cards 12px, buttons 10px) */
+  --r-ctl: var(--radius-control);
+  --r-box: var(--radius-box);
+  --r-btn: var(--radius-button);
+
+  /* Spacing: the design's scale, on the tokens where one exists */
+  --sp-1: var(--space-1);
+  --sp-2: var(--space-2);
+  --sp-3: var(--space-3);
+  --sp-4: var(--space-4);
+  --sp-5: var(--space-6);
+  --sp-6: var(--space-8);
+  --sp-7: var(--space-12);
+  --sp-8: 64px;
+  --sp-9: 96px;
+
+  /* Type and widths */
+  --font: var(--font-sans);
+  --display: "Red Hat Display", var(--font-sans);
+  --measure: 70ch;
+  --wrap: 1200px;
+  --gutter: 24px;
+
+  /* Website-only values: the hero over the video, and the shadows */
+  --hero-bg: #0b1220;
+  --hero-ink: #ffffff;
+  --hero-ink-2: rgba(255, 255, 255, .82);
+  --hero-eyebrow: #cfe0ff;
+  --hero-shade: rgba(8, 12, 18, .7);
+  --hero-shade-end: rgba(10, 18, 33, .45);
+  --on-dark-fill: rgba(255, 255, 255, .12);
+  --on-dark-line: rgba(255, 255, 255, .35);
+  --on-dark-last: rgba(138, 180, 255, .28);
+  --pause-line: rgba(255, 255, 255, .4);
+  --pause-bg: rgba(10, 18, 33, .55);
+  --mock-tile-a: #c9d4e4;
+  --mock-tile-b: #8a9bb5;
+  --shadow-mock: 0 24px 60px rgba(0, 0, 0, .35);
+  --shadow-shot: 0 12px 32px rgba(15, 31, 61, .12);
+  --shadow-phone: 0 16px 40px rgba(15, 31, 61, .18);
+  --shadow-sheet: 0 16px 32px rgba(0, 0, 0, .4);
+}
