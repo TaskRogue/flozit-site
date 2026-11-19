@@ -15,6 +15,7 @@ Standard library only.
 from __future__ import annotations
 
 import argparse
+import os
 import hashlib
 import json
 import subprocess
@@ -25,9 +26,14 @@ ROOT = Path(__file__).resolve().parent.parent
 TOKENS = ROOT / "tokens.css"
 LOCK = ROOT / "tokens.lock"
 DARK_SCOPE = ROOT / "tokens-dark.css"
-DEFAULT_SOURCE = Path(
-    r"C:\Users\csimo\github\flozit-worktrees\password\flozit\web\static\tokens.css"
-)
+# Where the app's tokens.css is on this machine: the SOURCE argument, else the
+# FLOZIT_TOKENS_SOURCE environment variable. No machine path is ever kept in this public repo.
+APP_PATH = "flozit/web/static/tokens.css"  # the file's path inside the app repo, for the lock
+
+
+def default_source() -> Path | None:
+    value = os.environ.get("FLOZIT_TOKENS_SOURCE", "").strip()
+    return Path(value) if value else None
 
 
 def sha256(path: Path) -> str:
@@ -74,7 +80,7 @@ def sync(source: Path) -> int:
     commit = git(source, "rev-parse", "HEAD") or "unknown"
     uncommitted = bool(git(source, "status", "--porcelain", "--", source.name))
     lock = {
-        "source_path": str(source),
+        "source_path": APP_PATH,
         "source_commit": commit,
         "source_uncommitted_changes": uncommitted,
         "sha256": sha256(TOKENS),
@@ -106,8 +112,8 @@ def check(source: Path | None) -> int:
         problems.append(
             "tokens-dark.css is not the dark block of tokens.css. Run scripts/sync_tokens.py."
         )
-    src = source or DEFAULT_SOURCE
-    if src.is_file():
+    src = source or default_source()
+    if src is not None and src.is_file():
         if sha256(src) != mine:
             problems.append(
                 f"The app's tokens have changed since the last sync ({src}). "
@@ -131,7 +137,11 @@ def main() -> int:
     args = ap.parse_args()
     if args.check:
         return check(args.source)
-    return sync(args.source or DEFAULT_SOURCE)
+    src = args.source or default_source()
+    if src is None:
+        print("Give the app's tokens.css as SOURCE, or set FLOZIT_TOKENS_SOURCE.", file=sys.stderr)
+        return 2
+    return sync(src)
 
 
 if __name__ == "__main__":
