@@ -251,6 +251,12 @@ p a{text-decoration:underline}
 .legal-toc a:hover{background:var(--surface-2);color:var(--ink)}
 .legal-body{display:flex;flex-direction:column;gap:var(--sp-7);max-width:var(--measure)}
 .legal-sec{display:flex;flex-direction:column;gap:var(--sp-3)}
+/* the text (Chris, 2026-11-19; from the app repo's flozit/content/legal): lists keep their markers */
+.legal-sec p,.legal-sec li{color:var(--ink-2)}
+.legal-sec strong{color:var(--ink);font-weight:600}
+.legal-sec ul{list-style:disc;padding-left:1.25em}
+.legal-sec ol{list-style:decimal;padding-left:1.4em}
+.legal-sec li+li{margin-top:var(--sp-2)}
 @media (max-width:900px){.plans{grid-template-columns:1fr}.legal-grid{grid-template-columns:1fr}.legal-toc{position:static;flex-direction:row;flex-wrap:wrap;gap:4px}}
 
 /* the live beta spots counter beside every Request beta access button; absent when the count can't load */

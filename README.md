@@ -11,6 +11,10 @@ app's sign-up, https://app.flozit.com/sign-up.
 
 - `index.html`, `about/`, `pricing/`, `privacy/`, `terms/`: the pages. Edit them by hand. The
   header, footer and beta button are repeated on every page; change them on all five.
+- `privacy/` and `terms/`: their `<main>` is written by the app repo's `scripts/sync_legal_site.py` from
+  `flozit/content/legal/privacy.md` and `terms.md`, the one source the app's /privacy and /terms show too.
+  Edit the text there, run `python scripts/sync_legal_site.py <this folder>`, and commit both pages here;
+  `--check` says whether they are up to date. The header, footer and head are edited here as usual.
 - `hero.js`: starts the hero background video after the page has loaded. Never on a phone, upright or sideways, or a tablet, with
   reduced motion, or with Save-Data on; those visitors keep the poster (Chris, 2026-11-19). The `<video>` has no sources in the
   HTML and `preload="none"`; `hero.js` adds them only when it may play, so a phone never downloads the video file. `site.css`
