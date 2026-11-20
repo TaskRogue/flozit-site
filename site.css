@@ -290,6 +290,8 @@ main>section.scope{padding:var(--sp-6) 0;border-top:1px solid var(--line-soft);b
 @media (max-width:900px){.costs.four{grid-template-columns:1fr}.tip{margin-top:var(--sp-6)}}
 /* phone header: no sideways scroll at 390 */
 @media (max-width:900px){.head-row{gap:var(--sp-3)}.head-act{min-width:0;gap:var(--sp-2)}.head-act .button{width:auto;padding-left:16px;padding-right:16px}}
+/* the smallest phones (320 to 360): a 16px gutter and a tighter header, so the wordmark, the beta button and the menu fit 320 with no sideways scroll */
+@media (max-width:360px){:root{--gutter:16px}.head-row{gap:var(--sp-1)}.head-act{gap:var(--sp-1)}.wordmark{gap:6px;font-size:20px;flex:none}.wordmark img{width:24px;height:24px}.head-act .button{font-size:14px;padding-left:10px;padding-right:10px}}
 
 /* ---- flozit.com additions to the design file ---- */
 
