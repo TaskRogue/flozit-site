@@ -20,11 +20,11 @@ app's sign-up, https://app.flozit.com/sign-up.
   HTML and `preload="none"`; `hero.js` adds them only when it may play, so a phone never downloads the video file. `site.css`
   also hides the video and its pause button at 560px and under and on touch screens, and a desktop video pauses when the
   window narrows to that size. Runs nothing else.
-- `fonts/red-hat-display/`: Red Hat Display, the wordmark's font (and the mock's HC plate), SIL OFL (`OFL.txt` beside it).
-  Taken from the official Google Fonts repository (github.com/google/fonts, `ofl/redhatdisplay/RedHatDisplay[wght].ttf`,
-  commit 105f8a8f), fixed at weight 800 and subset to the letters F l o z i t H C with kerning, as WOFF2 (1,160 bytes).
-  The `@font-face` in `site.css` has a matching `unicode-range`, so any other letter falls back to Inter. If the design sets
-  more text in Red Hat Display, subset again from the same source with the new letters. Data only: nothing runs from it.
+- `fonts/red-hat-display/`: Red Hat Display, the font of the wordmark, the mock's HC plate and the page headings
+  (`.h1` and `.h2`, Chris, 2026-11-23; everything else is Inter), SIL OFL (`OFL.txt` beside it). Taken from the official
+  Google Fonts repository (github.com/google/fonts, `ofl/redhatdisplay/RedHatDisplay[wght].ttf`, font version 1.030,
+  commit 06bfe0d6), fixed at weight 800 and subset to Latin with kerning, as WOFF2 (15,036 bytes). One weight, one file,
+  `font-display: swap`. Data only: nothing runs from it.
 - `spots.js`: the live beta spots counter beside every Request beta access button. One GET to
   https://app.flozit.com/beta/spots (`{"cap": 10, "remaining": n}`, CORS for https://flozit.com
   only, no cookies sent) sets `html[data-beta]` to open, last (3 or fewer) or full (0: the button

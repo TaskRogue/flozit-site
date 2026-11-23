@@ -9,9 +9,9 @@
 @font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/inter-latin-400-normal.woff2") format("woff2"); }
 @font-face { font-family: "Inter"; font-style: normal; font-weight: 500; font-display: swap; src: url("/fonts/inter-latin-500-normal.woff2") format("woff2"); }
 @font-face { font-family: "Inter"; font-style: normal; font-weight: 600; font-display: swap; src: url("/fonts/inter-latin-600-normal.woff2") format("woff2"); }
-/* Red Hat Display 800, only for the wordmark and the mock's plate (--display): subset to the letters
-   they set (Flozit, HC); any other letter falls back to Inter. fonts/red-hat-display/, SIL OFL. */
-@font-face { font-family: "Red Hat Display"; font-style: normal; font-weight: 800; font-display: swap; src: url("/fonts/red-hat-display/red-hat-display-800-wordmark.woff2") format("woff2"); unicode-range: U+0043, U+0046, U+0048, U+0069, U+006C, U+006F, U+0074, U+007A; }
+/* Red Hat Display 800 for the wordmark, the mock's plate and the page headings (.h1 and .h2; Chris, 2026-11-23):
+   the Latin subset, one weight, one file. fonts/red-hat-display/, SIL OFL. */
+@font-face { font-family: "Red Hat Display"; font-style: normal; font-weight: 800; font-display: swap; src: url("/fonts/red-hat-display/red-hat-display-800-latin.woff2") format("woff2"); }
 
 *,*::before,*::after{box-sizing:border-box}
 html{font-family:var(--font);font-size:17px;line-height:1.55;color:var(--ink);background:var(--page);-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
@@ -37,8 +37,8 @@ main>section{padding:var(--sp-9) 0}
 
 /* type */
 .eyebrow{font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink)}
-.h1{font-size:clamp(2.1rem,1.2rem + 2.6vw,3.3rem);line-height:1.1;font-weight:600;letter-spacing:-.02em;text-wrap:balance;max-width:20ch}
-.h2{font-size:clamp(1.75rem,1.2rem + 1.4vw,2.4rem);line-height:1.15;font-weight:600;letter-spacing:-.015em;text-wrap:balance;max-width:24ch}
+.h1{font-family:var(--display);font-size:clamp(2.1rem,1.2rem + 2.6vw,3.3rem);line-height:1.08;font-weight:800;letter-spacing:-.02em;text-wrap:balance;max-width:20ch}
+.h2{font-family:var(--display);font-size:clamp(1.75rem,1.2rem + 1.4vw,2.4rem);line-height:1.12;font-weight:800;letter-spacing:-.015em;text-wrap:balance;max-width:24ch}
 .h3{font-size:1.25rem;line-height:1.3;font-weight:600}
 .lead{font-size:1.25rem;line-height:1.5;color:var(--ink-2);max-width:var(--measure)}
 .sub{font-size:1.125rem;color:var(--ink-2);max-width:var(--measure);margin-top:var(--sp-3)}
