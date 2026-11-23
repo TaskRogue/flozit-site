@@ -41,8 +41,10 @@
   --sp-9: 96px;
 
   /* Type and widths */
-  --font: var(--font-sans);
-  --display: "Red Hat Display", var(--font-sans);
+  /* The site's own fonts (Chris, 2026-11-23): DM Sans for text, Red Hat Display for the wordmark and .h1/.h2.
+     Not the app's --font-sans, which stays Inter inside the app. */
+  --font: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --display: "Red Hat Display", "DM Sans", system-ui, sans-serif;
   --measure: 70ch;
   --wrap: 1200px;
   --gutter: 24px;

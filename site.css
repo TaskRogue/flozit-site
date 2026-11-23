@@ -2,13 +2,15 @@
    app repo, 64a73441). Loaded after tokens.css, tokens-dark.css and site-tokens.css. The site is dark
    for everyone: <html class="theme-dark">. Colours come only from tokens: site-tokens.css gives the
    design's names (--page, --ink, --accent, ...) to the app's tokens and holds the few website-only
-   hero values; there is no raw colour in this file. Inter for everything, the wordmark in --display
-   beside the logo, Lucide icons inline. Body text 17px, lines at most 70 characters. No cookies. */
+   hero values; there is no raw colour in this file. DM Sans for everything, Red Hat Display 800 for the
+   wordmark and the page headings (Chris, 2026-11-23), Lucide icons inline. Body text 17px, lines at most 70 characters. No cookies. */
 
-/* Fonts, self-hosted (SIL Open Font License, see fonts/) */
-@font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/inter-latin-400-normal.woff2") format("woff2"); }
-@font-face { font-family: "Inter"; font-style: normal; font-weight: 500; font-display: swap; src: url("/fonts/inter-latin-500-normal.woff2") format("woff2"); }
-@font-face { font-family: "Inter"; font-style: normal; font-weight: 600; font-display: swap; src: url("/fonts/inter-latin-600-normal.woff2") format("woff2"); }
+/* Fonts, self-hosted (SIL Open Font License, see fonts/). DM Sans 400, 500, 600 and 700 for all text (Chris,
+   2026-11-23, replacing Inter): the Latin subset of each weight, fonts/dm-sans/. */
+@font-face { font-family: "DM Sans"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/dm-sans/dm-sans-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "DM Sans"; font-style: normal; font-weight: 500; font-display: swap; src: url("/fonts/dm-sans/dm-sans-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "DM Sans"; font-style: normal; font-weight: 600; font-display: swap; src: url("/fonts/dm-sans/dm-sans-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "DM Sans"; font-style: normal; font-weight: 700; font-display: swap; src: url("/fonts/dm-sans/dm-sans-latin-700-normal.woff2") format("woff2"); }
 /* Red Hat Display 800 for the wordmark, the mock's plate and the page headings (.h1 and .h2; Chris, 2026-11-23):
    the Latin subset, one weight, one file. fonts/red-hat-display/, SIL OFL. */
 @font-face { font-family: "Red Hat Display"; font-style: normal; font-weight: 800; font-display: swap; src: url("/fonts/red-hat-display/red-hat-display-800-latin.woff2") format("woff2"); }

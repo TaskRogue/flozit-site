@@ -2,7 +2,7 @@
 
 The Flozit website: plain HTML and one stylesheet, served as-is by GitHub Pages from
 `main`. There is no build step and no framework. Self-hosted fonts (`fonts/`, SIL Open
-Font License). No trackers, analytics, cookies or outside scripts. The pages are built from
+Font License): DM Sans for all text, Red Hat Display 800 for the wordmark and the page headings. No trackers, analytics, cookies or outside scripts. The pages are built from
 Claude Design's 20-website (`docs/design/screens/20-website/` in the app repo) and are dark
 for everyone (`<html class="theme-dark">`). Every Request beta access button links to the
 app's sign-up, https://app.flozit.com/sign-up.
@@ -20,8 +20,12 @@ app's sign-up, https://app.flozit.com/sign-up.
   HTML and `preload="none"`; `hero.js` adds them only when it may play, so a phone never downloads the video file. `site.css`
   also hides the video and its pause button at 560px and under and on touch screens, and a desktop video pauses when the
   window narrows to that size. Runs nothing else.
+- `fonts/dm-sans/`: DM Sans, the font of all other text (Chris, 2026-11-23, replacing Inter), SIL OFL (`OFL.txt`
+  beside it). From the same Google Fonts repository (`ofl/dmsans/DMSans[opsz,wght].ttf`, font version 4.004, commit
+  06bfe0d6), fixed at optical size 9 (the font's default, what the Google Fonts link serves) and weights 400, 500, 600
+  and 700, each subset to Latin with kerning, as WOFF2 (15 KB each), `font-display: swap`.
 - `fonts/red-hat-display/`: Red Hat Display, the font of the wordmark, the mock's HC plate and the page headings
-  (`.h1` and `.h2`, Chris, 2026-11-23; everything else is Inter), SIL OFL (`OFL.txt` beside it). Taken from the official
+  (`.h1` and `.h2`, Chris, 2026-11-23; everything else is DM Sans), SIL OFL (`OFL.txt` beside it). Taken from the official
   Google Fonts repository (github.com/google/fonts, `ofl/redhatdisplay/RedHatDisplay[wght].ttf`, font version 1.030,
   commit 06bfe0d6), fixed at weight 800 and subset to Latin with kerning, as WOFF2 (15,036 bytes). One weight, one file,
   `font-display: swap`. Data only: nothing runs from it.
