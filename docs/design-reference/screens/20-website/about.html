@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>About Flozit</title>
+<meta name="description" content="Flozit is built in Johnson City, Tennessee, for small custom builders whose buyers live out of state.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body data-state="default">
+<header class="site-head"><div class="wrap head-row"><a class="wordmark" href="index.html"><img src="media/logo-128.png" alt="" width="28" height="28">Flozit</a><nav class="site-nav" aria-label="Main"><a href="#how">How it works</a><a href="#offer">What you get</a><a href="pricing.html">Pricing</a><a href="about.html" aria-current="page">About</a></nav><div class="head-act"><a class="log" href="https://app.flozit.com/sign-in">Log in</a><span class="head-cta"><a class="button" href="https://app.flozit.com/sign-up" data-only="default last nocount">Request beta access</a><a class="button secondary" href="mailto:support@flozit.com" data-only="full">Beta is full</a><span class="spots-wrap desk-only"><span class="spots" data-only="default">7 of 10 beta spots left</span><span class="spots last" data-only="last">3 of 10 beta spots left</span><span class="spots full" data-only="full">All 10 beta spots are taken</span></span></span><button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M4 6h16"/><path d="M4 18h16"/></svg></button></div></div></header><main><section class="about-hero" aria-labelledby="about-h"><div class="wrap"><div class="sec-head" style="margin-bottom:0"><p class="eyebrow">Make work flow</p><h1 class="h1" id="about-h">Built in Johnson City, Tennessee, for small custom builders</h1></div></div></section>
+<section aria-labelledby="note-h" style="padding-top:0"><div class="wrap about-grid">
+<figure class="shotwrap"><div class="shot"><img src="media/framing-interior.jpg" alt="A framing crew inside a house under construction" loading="lazy"></div></figure>
+<div class="about-copy"><h2 class="h2" id="note-h">A note from me</h2><p>I built Flozit for builders who would rather be on site than on the phone. Four to ten homes a year, buyers who often live out of state, and evenings spent answering texts about things the homeowner could have seen for themselves.</p><p>Flozit gives each home one page with your name on it. Homeowners pick, sign and follow the build there. You approve, and Flozit does the chasing.</p><p>During the beta your notes come straight to me. If something is confusing or missing, tell me.</p><p class="sig"><strong>Chris Simon</strong>, founder<br><a href="mailto:support@flozit.com">support@flozit.com</a></p></div>
+</div></section>
+<section class="band" aria-labelledby="how-we-h"><div class="wrap"><div class="sec-head"><h2 class="h2" id="how-we-h">How Flozit works with you</h2></div>
+<div class="costs">
+<div class="cost"><h3 class="h3">Set up with you</h3><p>The first home is set up together, one sitting, so it works before you add the next.</p></div>
+<div class="cost"><h3 class="h3">Your data is yours</h3><p>Every job, log, file and signed change order downloads whenever you want. Leave any time.</p></div>
+<div class="cost"><h3 class="h3">No tracking</h3><p>The site and the app set no tracking cookies and show no ads. Homeowner emails go out under your name and business.</p></div>
+</div></div></section>
+<section id="final" class="final" aria-labelledby="final-h"><div class="wrap"><div class="inner"><p class="result">Selections in on time. Changes signed before the work. Move-in on the date promised.</p><h2 class="h2" id="final-h">Your homeowners pick, sign and stay on schedule.</h2><p class="lead">Set up your first home this week.</p><div class="cta"><span class="btn-row"><a class="button" href="https://app.flozit.com/sign-up" data-only="default last nocount">Request beta access</a><a class="button secondary" href="mailto:support@flozit.com" data-only="full">Beta is full</a><span class="spots-wrap"><span class="spots" data-only="default">7 of 10 beta spots left</span><span class="spots last" data-only="last">3 of 10 beta spots left</span><span class="spots full" data-only="full">All 10 beta spots are taken</span></span></span><span class="next" data-only="default last nocount">Your email, a code, then a password. You&rsquo;re in.</span><span class="next" data-only="full">Email support@flozit.com and you are first in line for the next round.</span></div></div></div></section></main><footer class="site-foot"><div class="wrap foot-row"><div><a class="wordmark" href="index.html"><img src="media/logo-128.png" alt="" width="28" height="28">Flozit</a><p class="slogan">Make work flow</p><p class="small" style="margin-top:8px">Software for small custom home builders. Flozit LLC, Johnson City, Tennessee.</p></div><nav class="foot-links" aria-label="Footer"><a href="pricing.html">Pricing</a><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="mailto:support@flozit.com">support@flozit.com</a></nav></div></footer>
+<script>
+(function(){
+  var hero=document.querySelector('.hero'),v=document.getElementById('hero-video'),b=document.getElementById('hero-pause');
+  if(!hero||!v||!b)return;
+  var still=window.matchMedia('(prefers-reduced-motion: reduce)');
+  function stop(){v.pause();hero.classList.add('paused');b.setAttribute('aria-label','Play the background video');}
+  function go(){v.play().then(function(){hero.classList.remove('paused');b.setAttribute('aria-label','Pause the background video');}).catch(stop);}
+  if(still.matches){v.removeAttribute('autoplay');stop();return;}
+  b.addEventListener('click',function(){hero.classList.contains('paused')?go():stop();});
+  v.addEventListener('error',stop);
+})();
+</script>
+<script src="../_shared/state.js"></script>
+</body>
+</html>

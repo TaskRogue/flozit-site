@@ -1,0 +1,7 @@
+file,what it shows,source,page link,license,added,edits
+media/hero-drywall.mp4,Drywall sanding on stilts (home hero loop),Pexels video 6473925,https://www.pexels.com/video/6473925/,"Pexels License (free to use, no attribution required); confirmed by Chris 2026-11-05",2026-11-04 (reused 2026-11-12),Cropped from vertical to 16:9; first 12 seconds; 1280x720 H.264 at about 350 kb/s (541 KB); audio removed
+media/hero-drywall.webm,Same clip as hero-drywall.mp4,Pexels video 6473925,https://www.pexels.com/video/6473925/,Pexels License,2026-11-04 (reused 2026-11-12),VP9 version of the same crop (369 KB)
+media/hero-drywall-poster.jpg,First frame of the hero loop (shown instantly and under reduced motion),Pexels video 6473925,https://www.pexels.com/video/6473925/,Pexels License,2026-11-04 (reused 2026-11-12),Still from the cropped clip (43 KB)
+media/plan-and-tape.jpg,Tape measure on a floor plan (reserved for the pricing or about page),Pexels or Unsplash,"Free licence, confirmed by Chris 2026-11-05, link not recorded",Free licence,2026-11-04,Resized to 1600 wide; metadata removed
+media/framing-interior.jpg,Interior framing with crew (reserved for a second hero),Pexels or Unsplash,"Free licence, confirmed by Chris 2026-11-05, link not recorded",Free licence,2026-11-04,Cropped left edge; resized to 1600x1200; metadata removed
+img/*.png,Product screens,Flozit design renders (docs/design/screens, 18 and 19-redesign),,Flozit's own,2026-11-12,Cropped to the top of each render
