@@ -54,6 +54,9 @@ main>section{padding:var(--sp-9) 0}
 /* buttons and links: actions are buttons, the main one is the accent; a line under each says what happens next */
 .button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 var(--sp-5);border-radius:var(--r-btn);background:var(--accent);color:var(--accent-on);font-weight:600;font-size:17px;text-decoration:none;border:0;cursor:pointer;white-space:nowrap}
 .button.secondary{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+/* The main sign-up button, extra large (Chris, 2026-11-24): the hero's Request beta access only. */
+.button.xl{min-height:64px;padding:0 40px;font-size:21px;font-weight:700;border-radius:14px;box-shadow:var(--shadow-cta)}
+.button.xl.secondary{box-shadow:none}
 .button.on-dark.secondary{background:var(--on-dark-fill);color:var(--hero-ink);border-color:var(--on-dark-line)}
 .button:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .cta{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
@@ -140,9 +143,13 @@ p a{text-decoration:underline}
 .ba dt.after{color:var(--ok)}
 .ba dd{color:var(--ink-2)}
 .ba dd.after{color:var(--ink);font-weight:500}
-.shot{border-radius:var(--r-box);overflow:hidden;background:var(--surface-2);box-shadow:var(--shadow-shot)}
-.shot.phone{width:min(300px,100%);margin:0 auto;border-radius:24px;border:6px solid var(--line);box-shadow:var(--shadow-phone);aspect-ratio:300/560}
-.shot.phone img{height:100%;object-fit:cover;object-position:top}
+/* Product screens fade into the dark page (Chris, 2026-11-24): no frame, the image masked to transparent at its foot,
+   a deep shadow and a faint accent glow behind it, so the light app screens sit in the dark page instead of on it. */
+.shot{position:relative;isolation:isolate;border-radius:var(--r-box);overflow:visible;background:transparent;box-shadow:none}
+.shot::before{content:"";position:absolute;left:5%;right:5%;top:4%;bottom:32%;border-radius:inherit;box-shadow:var(--shadow-screen);z-index:-1}
+.shot img{border-radius:var(--r-box);-webkit-mask-image:var(--screen-fade);mask-image:var(--screen-fade)}
+.shot.phone{width:min(300px,100%);margin:0 auto;border-radius:28px;aspect-ratio:300/560}
+.shot.phone img{height:100%;object-fit:cover;object-position:top;border-radius:28px}
 
 .shot img{width:100%}
 .shotwrap{margin:0;display:flex;flex-direction:column;gap:var(--sp-2);align-items:center}
@@ -232,6 +239,7 @@ p a{text-decoration:underline}
   .pair:nth-child(even) .pair-copy{order:0}
   .proof-video{grid-template-columns:1fr}
   .button{width:100%}
+  .button.xl{min-height:60px;font-size:19px}
   .cta{align-items:stretch}
   .cta-row{flex-direction:column;gap:var(--sp-4)}
   .cta-row .cta{width:100%}
