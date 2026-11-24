@@ -21,9 +21,9 @@ app's sign-up, https://app.flozit.com/sign-up.
   also hides the video and its pause button at 560px and under and on touch screens, and a desktop video pauses when the
   window narrows to that size. Runs nothing else.
 - `fonts/dm-sans/`: DM Sans, the font of all other text (Chris, 2026-11-23, replacing Inter), SIL OFL (`OFL.txt`
-  beside it). From the same Google Fonts repository (`ofl/dmsans/DMSans[opsz,wght].ttf`, font version 4.004, commit
-  06bfe0d6), fixed at optical size 9 (the font's default, what the Google Fonts link serves) and weights 400, 500, 600
-  and 700, each subset to Latin with kerning, as WOFF2 (15 KB each), `font-display: swap`.
+  beside it). The files are Fontsource's (`@fontsource/dm-sans` 5.3.0 on npm, built from the Google Fonts release), cut to
+  what the site uses: the Latin subset of weights 400, 500, 600 and 700, upright only, about 14 KB each, `font-display:
+  swap`. To update, `npm pack @fontsource/dm-sans` and copy the four `files/dm-sans-latin-<weight>-normal.woff2`.
 - `fonts/red-hat-display/`: Red Hat Display, the font of the wordmark, the mock's HC plate and the page headings
   (`.h1` and `.h2`, Chris, 2026-11-23; everything else is DM Sans), SIL OFL (`OFL.txt` beside it). Taken from the official
   Google Fonts repository (github.com/google/fonts, `ofl/redhatdisplay/RedHatDisplay[wght].ttf`, font version 1.030,
