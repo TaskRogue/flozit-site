@@ -1,0 +1,12 @@
+# GitHub Pages builds this repo with Jekyll. Nothing here needs Jekyll (the pages are plain HTML),
+# so this file only keeps the non-page files out of the published site (Chris, 2026-11-24).
+# Files and folders whose names start with a dot or an underscore (.claude, .github, .gitattributes,
+# this file) are left out by Jekyll on its own. Everything not listed is published as-is: the pages,
+# 404.html, CNAME, sitemap.xml, site.webmanifest, the stylesheets and scripts, fonts/ (with the font
+# licences the SIL OFL asks to travel with the files), img/ and media/.
+# After go-live every excluded path must return 404; docs/go-live.md lists the check.
+exclude:
+  - README.md
+  - docs/
+  - scripts/
+  - tokens.lock

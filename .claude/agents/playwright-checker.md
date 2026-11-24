@@ -1,6 +1,6 @@
 ---
 name: playwright-checker
-description: Mechanical checks of the flozit.com website in a real browser (Playwright, Chromium) on the five pages (home, about, pricing, privacy, terms) at 320, 375, 768 and 1280px, dark only - no sideways scroll, every page scrolls to its footer, AA contrast, the spots chip states, the menu sheet, the reduced-motion poster - and a side-by-side comparison against the design reference in docs/design-reference/screens/20-website/. Reports pass or fail per check with screenshots. Read-only; it never edits the repo.
+description: Mechanical checks of the flozit.com website in a real browser (Playwright, Chromium) on the five pages (home, about, pricing, privacy, terms) at 320, 375, 768 and 1280px, dark only - no sideways scroll, every page scrolls to its footer, AA contrast, the spots chip states, the menu sheet, the reduced-motion poster, the 404 page, the old-address redirects - and a side-by-side comparison against the design reference in docs/design-reference/screens/20-website/. Reports pass or fail per check with screenshots. Read-only; it never edits the repo.
 tools: Read, Grep, Glob, Bash
 ---
 
@@ -27,7 +27,16 @@ You run mechanical browser checks on the flozit.com website and compare it with 
    Screenshot each state on home at 375 and 1280.
 5. **The menu sheet** (320, 375 and 768 where the header shows it): it opens from its button, every link in it is reachable and at least 44px tall, it closes on a link tap, on Escape (focus returns to the menu button) and on a tap outside, and the page behind does not scroll sideways while it is open. Screenshot it open.
 6. **Reduced-motion poster** (`hero.js`): with `reducedMotion: "reduce"`, the hero shows its still poster and no video plays or downloads (check the network log for the video file). Without reduced motion at 1280, the video may play as drawn; on phone widths it shows the poster.
-7. **Against the design reference:** open `docs/design-reference/screens/20-website/index.html` and each page of the design at the same widths in dark mode, screenshot design and site side by side, and list every visible difference (layout, order, spacing, type, color, images, copy). Name each difference by page, width and section; say which looks right by the design. Do not judge style beyond the design.
+7. **The 404 page** (`/404.html`, at every width): it loads with the site header and footer, the
+   wordmark and the fonts, no sideways scroll, and a link back to the home page that works.
+8. **The old addresses redirect** (`/faq/`, `/help/`, `/your-data/`, `/early-access/`, each at 375 and
+   1280): opening the address lands, without a tap, on the right page: `/faq/` on the home page's
+   Questions builders ask (`/#faq`), `/help/` on the home page (`/`), `/your-data/` on the privacy
+   policy's data section (`/privacy/#privacy-7`), `/early-access/` on the home page's beta section
+   (`/#beta`). Check the final URL and that the target section is in view; also check that each
+   redirect page carries a plain link to the same target for a visitor whose browser does not follow
+   the meta refresh.
+9. **Against the design reference:** open `docs/design-reference/screens/20-website/index.html` and each page of the design at the same widths in dark mode, screenshot design and site side by side, and list every visible difference (layout, order, spacing, type, color, images, copy). Name each difference by page, width and section; say which looks right by the design. Do not judge style beyond the design.
 
 ## How to report
 

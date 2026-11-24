@@ -13,6 +13,10 @@ after Chris's phone check and typed OK.
   already point `flozit.com` at GitHub Pages. Going live changes no DNS and no Pages setting.
 - **The app** is separate: `app.flozit.com`, hosted on Railway from the private app repo. The
   website only links to it (the beta buttons) and reads one endpoint from it (the spots counter).
+- **Jekyll:** GitHub Pages runs Jekyll on the repo. The pages need nothing from it; `_config.yml`
+  at the root only lists what to keep out of the published site (`README.md`, `docs/`, `scripts/`,
+  `tokens.lock`), and Jekyll skips dot and underscore paths by itself. Never add a `.nojekyll`
+  file: it would switch the exclusions off and publish those files.
 - **Checks on push:** one GitHub Action, `.github/workflows/tokens.yml`, runs
   `scripts/sync_tokens.py --check` on every push. It only confirms `tokens.css` matches
   `tokens.lock`; it does not deploy and does not block Pages.
@@ -74,6 +78,12 @@ All of this is done by Chris or with Chris's typed OK, never by the website sess
      Inter and Red Hat Display fonts (no fallback font in the wordmark).
    - `/help/`, `/faq/`, `/early-access/`, `/your-data/` land on the new pages.
    - A made-up address shows the Flozit 404 page.
+   - The files `_config.yml` keeps out of the site all return 404, not their contents:
+     `https://flozit.com/README.md`, `https://flozit.com/docs/go-live.md`,
+     `https://flozit.com/scripts/sync_tokens.py`, `https://flozit.com/tokens.lock`, and the dot
+     folders Jekyll skips on its own, `https://flozit.com/.github/workflows/tokens.yml` and
+     `https://flozit.com/.claude/agents/ui-reviewer.md`. If any of them opens, the Pages build
+     ignored `_config.yml`; check that no `.nojekyll` file was added (never add one).
    - The hero video plays on a computer and stays a still image on a phone.
    - The spots chip shows a count, or nothing, never a placeholder number.
    - A Request beta access button opens the app's sign-up.
