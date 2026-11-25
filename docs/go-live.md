@@ -52,8 +52,8 @@ after Chris's phone check and typed OK.
    The site can go live before these exist, since both fail safe, but the beta button would land
    on a 404 page.
 4. Confirm the remaining `[CONFIRM]` placeholders are either filled in or accepted as they stand:
-   price per month, the guarantee, setup minutes, and Flozit LLC's mailing address on the legal
-   pages. They show in the warning colour on the live site until replaced.
+   price per month, the guarantee and setup minutes. (The mailing address on the legal pages was
+   filled in on 2026-11-25.) They show in the warning colour on the live site until replaced.
 5. Note the commit `main` is on now, for the rollback: `git rev-parse main` (4368048 on
    2026-11-23).
 
